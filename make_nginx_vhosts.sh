@@ -13,7 +13,7 @@ done  < <(echo "`cat $i`")
 
 if [ ! -z "$key" ]; then
 echo "server {
-        listen 94.23.216.90:80;
+        listen IP:80;
         server_name $servername;
   return 301 https://www.$servername\$request_uri;
 }
@@ -21,7 +21,7 @@ echo "server {
 
 
 server {
-        listen 94.23.216.90:443;
+        listen IP:443;
         server_name $servername;
         ssl on;
         ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
@@ -49,7 +49,7 @@ server {
 else
 
 echo "server {
-        listen 94.23.216.90:80;
+        listen IP:80;
         server_name $servername;
         location / {
                 proxy_pass http://ispconfig;
